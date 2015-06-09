@@ -1,8 +1,11 @@
 package br.com.felipepedroso.entity.Pessoa;
 
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * Created by Felipe on 01/06/2015.
  */
+@DatabaseTable(tableName = "usuario")
 public class Usuario extends Funcionario{
     private String Usuario;
     private String Senha;

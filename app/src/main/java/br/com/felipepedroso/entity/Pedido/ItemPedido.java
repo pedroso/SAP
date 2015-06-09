@@ -1,10 +1,13 @@
 package br.com.felipepedroso.entity.Pedido;
 
+import com.j256.ormlite.table.DatabaseTable;
+
 import br.com.felipepedroso.entity.Produto.Produto;
 
 /**
  * Created by Felipe on 01/06/2015.
  */
+@DatabaseTable(tableName = "item_pedido")
 public class ItemPedido {
     private Long Id;
     private Pedido pedido;

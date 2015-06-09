@@ -30,7 +30,7 @@ public class FragmentContas extends Fragment implements IInflated {
     private boolean mSearchCheck;
     private static final String TEXT_FRAGMENT = "TEXT_FRAGMENT";
 
-    public FragmentContas newInstance(String text){
+    public FragmentContas newInstance(String text) {
         FragmentContas mFragment = new FragmentContas();
         Bundle mBundle = new Bundle();
 
@@ -53,7 +53,6 @@ public class FragmentContas extends Fragment implements IInflated {
         ListView list = (ListView) rootView.findViewById(R.id.lstItemPedidoRealizado);
 
         list.setAdapter(new ArrayAdapter<String>(rootView.getContext(), R.layout.item_pedido, itens));
-
 
         getActivity().setTitle("Contas");
         return rootView;

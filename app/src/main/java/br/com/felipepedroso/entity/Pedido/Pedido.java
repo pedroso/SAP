@@ -1,16 +1,33 @@
 package br.com.felipepedroso.entity.Pedido;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
+import com.j256.ormlite.table.DatabaseTable;
+
+import java.util.Collection;
+
 import br.com.felipepedroso.entity.Pessoa.Funcionario;
 import br.com.felipepedroso.entity.Pessoa.Usuario;
 
 /**
  * Created by Felipe on 01/06/2015.
  */
+@DatabaseTable(tableName = "pedido")
 public class Pedido {
+
+    @DatabaseField(generatedId = true)
     private Long id;
+
+    @DatabaseField
     private Usuario usuario;
+
+    @DatabaseField(foreign = true)
     private Conta conta;
 
+    @ForeignCollectionField
+    private Collection<ItemPedido> itensPedido;
+
+    public Pedido() { }
     public Pedido(Usuario usuario, Conta conta) {
         setUsuario(usuario);
         setConta(conta);
