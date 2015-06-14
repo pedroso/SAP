@@ -4,6 +4,7 @@ package br.com.felipepedroso.secondapp.contas;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,6 +29,7 @@ public class FragmentContasSelecaoMesa extends Fragment implements IInflated {
 
     private boolean mSearchCheck;
     private static final String TEXT_FRAGMENT = "TEXT_FRAGMENT";
+    private String mesaSelecionada;
 
     public FragmentContasSelecaoMesa newInstance(String text){
         FragmentContasSelecaoMesa mFragment = new FragmentContasSelecaoMesa();
@@ -48,6 +50,13 @@ public class FragmentContasSelecaoMesa extends Fragment implements IInflated {
         rootView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT ));
 
         Button btnSelecionarContaMesa = (Button) rootView.findViewById(R.id.btnVizualizarContaMesa);
+        EditText numMesa = (EditText) rootView.findViewById(R.id.edtNumeroMesa);
+
+        /*mesaSelecionada = numMesa.getText().toString();
+
+        if(!"".equals(mesaSelecionada)){
+            numMesa.setText(mesaSelecionada);
+        }*/
 
         btnSelecionarContaMesa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +66,11 @@ public class FragmentContasSelecaoMesa extends Fragment implements IInflated {
                 Fragment mFragment = new FragmentContas().newInstance("ContaMesa");
 
                 if (mFragment != null){
-                    mFragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, mFragment).commit();
+                    FragmentTransaction transaction = mFragmentManager.beginTransaction();
+
+                    transaction.addToBackStack(null);
+                    transaction.replace(R.id.container, mFragment, "FechamentoConta");
+                    transaction.commit();
                 }
             }
         });

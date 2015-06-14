@@ -4,6 +4,7 @@ package br.com.felipepedroso.secondapp.contas;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -51,6 +53,23 @@ public class FragmentContas extends Fragment implements IInflated {
         String[] itens = { "X-Frango - R$ 10,50", "X-Bacon - R$ 11,00", "Coca-Cola 600ML - R$ 4,00", "Suco de Laranja - R$ 4,50" };
 
         ListView list = (ListView) rootView.findViewById(R.id.lstItemPedidoRealizado);
+        Button btnFecharConta = (Button) rootView.findViewById(R.id.btnFecharConta);
+
+        btnFecharConta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager mFragmentManager = getActivity().getSupportFragmentManager();
+
+                Fragment fragment = (Fragment) mFragmentManager.findFragmentByTag("FechamentoConta");
+
+                FragmentTransaction transaction = mFragmentManager.beginTransaction();
+
+                transaction.remove(fragment);
+                transaction.commit();
+
+                getActivity().onBackPressed();
+            }
+        });
 
         list.setAdapter(new ArrayAdapter<String>(rootView.getContext(), R.layout.item_pedido, itens));
 

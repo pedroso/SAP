@@ -21,7 +21,7 @@ public class Funcionario {
     @DatabaseField
     private String Funcao;
 
-
+    public Funcionario() { }
     public Funcionario(String nome, String cpf, String funcao) {
         setNome(nome);
         setCpf(cpf);

@@ -9,6 +9,7 @@ public class Produto {
     private String nome;
     private Double valor;
 
+    public Produto() { }
     public Produto(Categoria categoria, String nome, Double valor) {
         this.setCategoria(categoria);
         this.setNome(nome);

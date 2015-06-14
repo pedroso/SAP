@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:text="Fechar Conta"
             android:layout_gravity="bottom"
-            android:id="@+id/btnFecharCOnta" />
+            android:id="@+id/btnFecharConta" />
 
     </LinearLayout>
 

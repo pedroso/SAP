@@ -21,7 +21,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:numeric="integer"/>
+            android:numeric="integer"
+            android:id="@+id/edtNumeroMesa"/>
 
         <Button
             android:layout_width="match_parent"

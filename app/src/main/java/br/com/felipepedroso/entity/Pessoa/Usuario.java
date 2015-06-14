@@ -10,6 +10,7 @@ public class Usuario extends Funcionario{
     private String Usuario;
     private String Senha;
 
+    public Usuario() { }
     public Usuario(String nome, String cpf, String funcao, String usuario, String senha) {
         super(nome, cpf, funcao);
         setUsuario(usuario);

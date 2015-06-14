@@ -1,5 +1,6 @@
 package br.com.felipepedroso.entity.Pedido;
 
+import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import br.com.felipepedroso.entity.Produto.Produto;
@@ -9,13 +10,20 @@ import br.com.felipepedroso.entity.Produto.Produto;
  */
 @DatabaseTable(tableName = "item_pedido")
 public class ItemPedido {
+    @DatabaseField(generatedId = true)
     private Long Id;
+
+    @DatabaseField
+    private Integer quantidade;
+
     private Pedido pedido;
     private Produto produto;
 
-    public ItemPedido(Pedido pedido, Produto produto) {
+    public ItemPedido() { }
+    public ItemPedido(Pedido pedido, Produto produto, Integer quantidade) {
         this.setPedido(pedido);
         this.setProduto(produto);
+        this.setQuantidade(quantidade);
     }
 
     public Long getId() {
@@ -40,5 +48,13 @@ public class ItemPedido {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Integer getQuantidade() {
+        return this.quantidade;
     }
 }

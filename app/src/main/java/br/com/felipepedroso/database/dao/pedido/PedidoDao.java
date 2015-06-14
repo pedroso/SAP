@@ -1,4 +1,4 @@
-package br.com.felipepedroso.database.dao;
+package br.com.felipepedroso.database.dao.pedido;
 
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.support.ConnectionSource;

@@ -8,6 +8,8 @@ public class Categoria {
     private String nome;
     private Categoria subCategoria;
 
+
+    public Categoria(){ }
     public Categoria(String nome, Categoria subCategoria) {
         this.setNome(nome);
         this.setSubCategoria(subCategoria);

@@ -66,12 +66,13 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
         //quando instacio e chamo o method newInstance, estou falando que quei abrir aquele fragment
         //essa linha abaixo irá ficar na classe gerenciadora de conteudo.
         //Fragment mFragment = new FragmentConteudo().newInstance(mHelpLiveo.get(position).getName(), position);
-        Fragment mFragment = new MenuInflaterManager().newInstance(mHelpLiveo.get(position).getName(), position);
+
+        MenuInflaterManager menuManager = new MenuInflaterManager();
+        Fragment mFragment = menuManager.newInstance(mHelpLiveo.get(position).getName(), position);
 
         if (mFragment != null){
             mFragmentManager.beginTransaction()
-                    //.addToBackStack(null)
-                    .replace(R.id.container, mFragment)
+                    .replace(R.id.container, mFragment, menuManager.getNome())
                     .commit();
         }
     }

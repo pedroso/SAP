@@ -13,21 +13,32 @@ import br.com.felipepedroso.secondapp.contas.FragmentContasSelecaoMesa;
  */
 public class MenuInflaterManager {
 
+    private String nome;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public MenuInflaterManager() {
 
     }
 
-    public Fragment newInstance(String text, int position){
+    public Fragment newInstance(String tagFragment, int position){
+        setNome(tagFragment);
         switch (position) {
             case 0:
                 //home
-                return new FragmentConteudo().newInstance(text);
+                return new FragmentConteudo().newInstance(tagFragment);
             case 1:
                 //Mesas
-                return new FragmentConteudoMesa().newInstance(text);
+                return new FragmentConteudoMesa().newInstance(tagFragment);
             case 2:
                 //Contas
-                return new FragmentContasSelecaoMesa().newInstance(text);
+                return new FragmentContasSelecaoMesa().newInstance(tagFragment);
             case 3:
                 //Sair
                 return new FragmentConteudo().newInstance("Quer mesmo sair?? rsrs");
