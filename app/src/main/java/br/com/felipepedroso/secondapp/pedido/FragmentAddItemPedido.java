@@ -48,10 +48,10 @@ public class FragmentAddItemPedido extends Fragment implements IInflated {
             public void onItemClick(AdapterView<?> adpterView, View view, int position, long arg3) {
                 FragmentManager mFragmentManager = getActivity().getSupportFragmentManager();
 
-                Fragment mFragment = new FragmentDadosPedido().newInstance("Pedido");
+                Fragment mFragment = new FragmentDadosPedido().newInstance("DadosPedido");
 
                 if (mFragment != null){
-                    mFragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, mFragment).commit();
+                    mFragmentManager.beginTransaction().addToBackStack("SelecaoPedido").replace(R.id.container, mFragment, "DadosPedido").commit();
                 }
 
                 //Toast.makeText(view.getContext(), "POSICAO: " + arg3, Toast.LENGTH_LONG).show();

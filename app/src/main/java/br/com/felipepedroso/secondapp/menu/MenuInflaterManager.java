@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import br.com.felipepedroso.secondapp.FragmentConteudo;
 import br.com.felipepedroso.secondapp.FragmentConteudoMesa;
+import br.com.felipepedroso.secondapp.MainActivity;
 import br.com.felipepedroso.secondapp.contas.FragmentContasSelecaoMesa;
 
 /**
@@ -27,7 +28,7 @@ public class MenuInflaterManager {
 
     }
 
-    public Fragment newInstance(String tagFragment, int position){
+    public Fragment newInstance(String tagFragment, int position, MainActivity main){
         setNome(tagFragment);
         switch (position) {
             case 0:
@@ -35,13 +36,11 @@ public class MenuInflaterManager {
                 return new FragmentConteudo().newInstance(tagFragment);
             case 1:
                 //Mesas
-                return new FragmentConteudoMesa().newInstance(tagFragment);
+                FragmentConteudoMesa frag = new FragmentConteudoMesa();
+                return frag.newInstance(tagFragment);
             case 2:
                 //Contas
                 return new FragmentContasSelecaoMesa().newInstance(tagFragment);
-            case 3:
-                //Sair
-                return new FragmentConteudo().newInstance("Quer mesmo sair?? rsrs");
             default:
                 return new FragmentConteudo().newInstance("Nenhum item de menu encontrado!");
         }

@@ -2,6 +2,8 @@ package br.com.felipepedroso.secondapp.pedido;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -9,10 +11,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import br.com.felipepedroso.factory.pedido.ItemPedidoFactory;
+import br.com.felipepedroso.secondapp.MainActivity;
 import br.com.felipepedroso.secondapp.R;
 import br.com.felipepedroso.secondapp.menu.IInflated;
 
@@ -20,6 +25,7 @@ public class FragmentDadosPedido extends Fragment implements IInflated {
 
     private boolean mSearchCheck;
     private static final String TEXT_FRAGMENT = "TEXT_FRAGMENT";
+    private MainActivity activity;
 
     public FragmentDadosPedido newInstance(String text) {
         FragmentDadosPedido fragment = new FragmentDadosPedido();
@@ -37,13 +43,26 @@ public class FragmentDadosPedido extends Fragment implements IInflated {
         View rootView = inflater.inflate(R.layout.fragment_dados_pedido, container, false);
 
         NumberPicker quantidade = (NumberPicker) rootView.findViewById(R.id.npQuantidade);
+        Button buttonInserir = (Button) rootView.findViewById(R.id.btnInserirItemPedido);
 
         quantidade.setMinValue(1);
         quantidade.setMaxValue(100);
 
         quantidade.computeScroll();
 
-        getActivity().setTitle("Pedido");
+        getActivity().setTitle("Dados do pedido");
+
+        buttonInserir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager mFragmentManager = getFragmentManager();
+
+                mFragmentManager.popBackStack();
+                mFragmentManager.popBackStack();
+            }
+        });
+
+
         return rootView;
     }
 
@@ -108,5 +127,9 @@ public class FragmentDadosPedido extends Fragment implements IInflated {
             return false;
         }
     };
+
+    public void setActivity(MainActivity activity){
+        this.activity = activity;
+    }
 
 }

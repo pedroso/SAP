@@ -4,6 +4,7 @@ package br.com.felipepedroso.secondapp;
         import android.os.Bundle;
         import android.support.v4.app.Fragment;
         import android.support.v4.app.FragmentManager;
+        import android.support.v4.app.FragmentTransaction;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -40,7 +41,10 @@ public class FragmentConteudoMesa extends Fragment implements IInflated {
             Fragment mFragment = new FragmentPedido().newInstance("Pedido");
 
             if (mFragment != null){
-                mFragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, mFragment).commit();
+                FragmentTransaction transaction = mFragmentManager.beginTransaction();
+                transaction.addToBackStack(null)
+                                .replace(R.id.container, mFragment, "Pedido")
+                                .commit();
             }
 
             }

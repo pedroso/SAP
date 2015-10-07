@@ -21,6 +21,9 @@ public class Pedido {
     @DatabaseField
     private Usuario usuario;
 
+    @DatabaseField
+    private Boolean enviado;
+
     @DatabaseField(foreign = true)
     private Conta conta;
 
@@ -55,5 +58,17 @@ public class Pedido {
 
     public void setConta(Conta conta) {
         this.conta = conta;
+    }
+
+    public Boolean getEnviado() {
+        return enviado;
+    }
+
+    public void setEnviado(Boolean enviado) {
+        this.enviado = enviado;
+    }
+
+    public void addItemPedido(ItemPedido itemPedido){
+        this.itensPedido.add(itemPedido);
     }
 }
